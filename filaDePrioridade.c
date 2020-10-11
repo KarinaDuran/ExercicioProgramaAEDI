@@ -1,24 +1,13 @@
-/*********************************************************************/
-/**   ACH2023 - Algoritmos e Estruturas de Dados I                  **/
-/**   EACH-USP - Segundo Semestre de 2020                           **/
-/**   Turma 94 - Prof. Luciano Antonio Digiampietri                 **/
-/**                                                                 **/
-/**   EP1 - Fila de Prioridade                                      **/
-/**                                                                 **/
-/**   Karina Duran Munhos                   11295911                **/
-/**                                                                 **/
-/*********************************************************************/
-
 #include "filaDePrioridade.h"
 #include <malloc.h>
 #define true 1
 #define false 0
 /*
-*Funcao que inicializa uma fila com um tamanho máximo de elementos definido pelo int max.
-*Aloca na memoria espaço para uma fila, cria o no cabeça com ID = -1 e prioridade = 1000000.
-*Acerta os ponteiros ant e prox do no cabeça para apontarem para ele mesmo.
+*Funcao que inicializa uma fila com um tamanho mÃ¡ximo de elementos definido pelo int max.
+*Aloca na memoria espaÃ§o para uma fila, cria o no cabeÃ§a com ID = -1 e prioridade = 1000000.
+*Acerta os ponteiros ant e prox do no cabeÃ§a para apontarem para ele mesmo.
 *Cria um arranjo auxiliar com o tamanho maximo definido por max e todos os elementos recebem NULL.
-*Retorna o endereço da fila criada.
+*Retorna o endereÃ§o da fila criada.
 */
 PFILA criarFila(int max)
 {
@@ -36,10 +25,10 @@ PFILA criarFila(int max)
     return res;
 }
 
-/*Funcao para imprimir o numero de elementos validos (sem o no cabeça) de uma fila de prioridade e para cada elemento
-percorrido, incluindo o no cabeça, imprime o endereco do anterior, o ID, a prioridade e o endereco do atual e o endereco
+/*Funcao para imprimir o numero de elementos validos (sem o no cabeÃ§a) de uma fila de prioridade e para cada elemento
+percorrido, incluindo o no cabeÃ§a, imprime o endereco do anterior, o ID, a prioridade e o endereco do atual e o endereco
 do proximo. Em seguida, imprime os elementos validos com seu ID, prioridade e endereco.
-No fim, imprime o arranjo auxiliar com os enderecos dos elementos na posição respectiva de seu ID.*/
+No fim, imprime o arranjo auxiliar com os enderecos dos elementos na posiÃ§Ã£o respectiva de seu ID.*/
 void exibirLog(PFILA f)
 {
     printf("Log [elementos: %i (alem do no cabeca)]\n", tamanho(f));
@@ -67,7 +56,7 @@ void exibirLog(PFILA f)
 
 
 
-//Função que recebe o endereco de uma fila de prioridade como parâmetro e retorna o tamanho da fila.
+//FunÃ§Ã£o que recebe o endereco de uma fila de prioridade como parÃ¢metro e retorna o tamanho da fila.
 int tamanho(PFILA f)
 {
     int tam = 0;
@@ -122,7 +111,7 @@ Funcao para inserir um novo elemento em uma fila de prioridade e recebe como par
 e a prioridade do elemento.
 
 Retorna false se: ID for invalido, isto e, menor que 0 ou maior ou igual que o numero maximo de elementos, a
-prioridade for maior que a do no cabeça ou se ja existir um elemento na fila que possua o mesmo ID recebido como
+prioridade for maior que a do no cabeÃ§a ou se ja existir um elemento na fila que possua o mesmo ID recebido como
 parametro.
 
 Caso contrario, o elemento e inserido na posicao correta seguindo a ordem decrescente de prioridades e acerta-se
@@ -137,7 +126,7 @@ bool inserirElemento(PFILA f, int id, float prioridade)
     }
     else
     {
-        //Aloca espaço na memória para o novo elemento
+        //Aloca espaÃ§o na memÃ³ria para o novo elemento
         PONT novo = (PONT) malloc (sizeof(ELEMENTO));
         //Atribui ID e prioridade ao novo elemento
         novo->id = id;
@@ -187,7 +176,7 @@ bool aumentarPrioridade(PFILA f, int id, float novaPrioridade)
             f->arranjo[id]->prox->ant = f->arranjo[id]->ant;
             //Atribuii o novo valor de prioridade
             f->arranjo[id]->prioridade = novaPrioridade;
-            //Utiliza a funcao auxiliar para encontrar a posição correta da nova prioridade
+            //Utiliza a funcao auxiliar para encontrar a posiÃ§Ã£o correta da nova prioridade
             PONT ant = buscaAnt(f, novaPrioridade);
             //Acerta os ponteiros ant e prox do elemento com a nova prioridade
             f->arranjo[id]->ant = ant;
@@ -230,7 +219,7 @@ bool reduzirPrioridade(PFILA f, int id, float novaPrioridade)
             f->arranjo[id]->prox->ant = f->arranjo[id]->ant;
             //Atribuii o novo valor de prioridade
             f->arranjo[id]->prioridade = novaPrioridade;
-            //Utiliza a funcao auxiliar para encontrar a posição correta da nova prioridade
+            //Utiliza a funcao auxiliar para encontrar a posiÃ§Ã£o correta da nova prioridade
             PONT ant = buscaAnt(f, novaPrioridade);
             //Acerta os ponteiros ant e prox do elemento com a nova prioridade
             f->arranjo[id]->ant = ant;
@@ -266,7 +255,7 @@ PONT removerElemento(PFILA f)
     return resposta;
 }
 
-/*Funcao que recebe um inteiro ID, um endereco de uma fila e um endereço para armazenar um tipo float, contido em
+/*Funcao que recebe um inteiro ID, um endereco de uma fila e um endereÃ§o para armazenar um tipo float, contido em
 resposta, que armazenara a prioridade do elemento com o ID recebido.
 
 Retorna false se: o ID for invalido, isto e, menor que zero ou maior ou igual que o numero de elementos maximo,
